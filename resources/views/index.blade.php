@@ -75,7 +75,7 @@
             flex-direction: column;
         }
         .header {
-            position: relative;
+            position: sticky;
             margin-top:0px;
             top: 0;
             z-index: 100;
@@ -2900,7 +2900,7 @@
             </div>
 
             <p class="copyright">
-                © 2026 ldtecs INDIA. All rights reserved.
+                © 2026 VS PRODUCTS INDIA. All rights reserved.
             </p>
 
         </div>
