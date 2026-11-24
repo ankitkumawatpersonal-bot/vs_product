@@ -3578,11 +3578,5 @@
         });
 
     </script>
-
-    <!-- <a href="https://wa.me/919054005433" class="floating-whatsapp" id="whatsappContact" target="_blank" rel="noopener noreferrer">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
-    @include('partials.chatbot') -->
 </body>
 </html>
