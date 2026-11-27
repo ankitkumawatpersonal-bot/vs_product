@@ -87,7 +87,7 @@
 
         .img {
             width: 100px;
-            height: 75px;
+            height: 100px;
             cursor: pointer;
             object-fit: cover;
             transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -1594,7 +1594,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 99999;
+    z-index: 999999;
     opacity: 1;
     visibility: visible;
     transition: opacity 0.8s ease, visibility 0.8s ease;
@@ -1602,6 +1602,7 @@
 
 #introLoader img {
     width: 150px;
+    max-width: 60%;
     height: auto;
     opacity: 0;
     animation: logoIntro 1.5s ease forwards;
@@ -1627,6 +1628,20 @@
     100% {
         opacity: 1;
         transform: scale(1) rotate(0deg);
+    }
+}
+
+@media (max-width: 576px) {
+    #introLoader img {
+        width: 120px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #introLoader img {
+        animation: none;
+        opacity: 1;
+        transform: none;
     }
 }
 
@@ -2045,20 +2060,237 @@
             }
         }
         
+        /* section2 */
+
+
+.higher-yellow {
+    padding: 90px 7%;
+    background: linear-gradient(135deg, #fffdf8, #f8f3e9);
+    position: relative;
+    overflow: hidden;
+}
+
+.casting {
+    max-width: 1250px;
+    margin: auto;
+}
+
+.higher-karatage {
+    text-align: center;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    color: #29231b;
+    margin-bottom: 55px;
+    position: relative;
+    letter-spacing: 1px;
+}
+
+.higher-karatage::after {
+    content: "";
+    display: block;
+    width: 85px;
+    height: 4px;
+    margin: 18px auto 0;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #b88632, #f4d58d, #b88632);
+}
+
+.higher-para {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.higher-para li {
+    list-style: none;
+    position: relative;
+    padding: 22px 20px 22px 48px;
+    background: #ffffff;
+    border: 1px solid #eee2c9;
+    border-radius: 10px;
+    color: #454039;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    line-height: 1.6;
+    box-shadow: 0 5px 18px rgba(99, 73, 30, 0.05);
+    transition: all 0.35s ease;
+}
+
+.higher-para li::before {
+    content: "✦";
+    position: absolute;
+    left: 19px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #c39543;
+    font-size: 18px;
+}
+
+.higher-para li:hover {
+    transform: translateY(-6px);
+    border-color: #c39543;
+    box-shadow: 0 12px 28px rgba(145, 105, 38, 0.13);
+    background: #fffdf8;
+    color: #a4772c;
+}
+
+
+/* ==============================
+   RESPONSIVE - HIGHER KARATAGE
+================================ */
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+    .higher-para {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+    }
+
+    .higher-yellow {
+        padding: 90px 7%;
+    }
+}
+
+/* Laptop */
+@media (max-width: 1199px) {
+    .higher-para {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+
+    .higher-para li {
+        font-size: 13px;
+        padding: 18px 12px 18px 38px;
+    }
+
+    .higher-para li::before {
+        left: 13px;
+    }
+}
+
+/* Tablet / iPad */
+@media (max-width: 991px) {
+    .higher-yellow {
+        padding: 70px 5%;
+    }
+
+    .higher-karatage {
+        font-size: 36px;
+        margin-bottom: 40px;
+    }
+
+    .higher-para {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .higher-para li {
+        font-size: 13px;
+        padding: 18px 12px 18px 38px;
+        line-height: 1.5;
+    }
+}
+
+/* Small Tablet */
+@media (max-width: 767px) {
+    .higher-yellow {
+        padding: 60px 25px;
+    }
+
+    .higher-karatage {
+        font-size: 32px;
+    }
+
+    .higher-para {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .higher-para li {
+        font-size: 12px;
+        padding: 16px 10px 16px 32px;
+        border-radius: 8px;
+        overflow-wrap: anywhere;
+    }
+
+    .higher-para li::before {
+        left: 10px;
+        font-size: 15px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+    .higher-yellow {
+        padding: 50px 18px;
+    }
+
+    .higher-karatage {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+
+    .higher-karatage::after {
+        width: 65px;
+        height: 3px;
+        margin-top: 12px;
+    }
+
+    .higher-para {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .higher-para li {
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 13px;
+        padding: 17px 15px 17px 42px;
+        line-height: 1.5;
+    }
+
+    .higher-para li::before {
+        left: 15px;
+        font-size: 16px;
+    }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 375px) {
+    .higher-yellow {
+        padding: 40px 14px;
+    }
+
+    .higher-karatage {
+        font-size: 25px;
+    }
+
+    .higher-para li {
+        font-size: 11px;
+        padding: 15px 10px 15px 35px;
+    }
+
+    .higher-para li::before {
+        left: 11px;
+    }
+}
+
+
+
 
     </style>
 </head>
 <body>
     <div class="page1">
-        <div id="introLoader">
-            <img src="{{ asset('logo.webp') }}" alt="VS PRODUCT">
-        </div>
+        
         <header class="header">
             <div class="logo">
-                <img class="img" src="logo.webp" alt="logo" onerror="this.style.background='var(--text)'">
+                <img class="img" src="logo1.png" alt="logo" onerror="this.style.background='var(--text)'">
             </div>
 
             <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false">
+                <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
@@ -2197,6 +2429,32 @@
                     Enquire Now →
                 </a>
 
+            </div>
+
+        </section>
+
+        <section class="higher-yellow">
+            <div class="casting">
+                <h1 class="higher-karatage"> Higher Karatage </h1>
+                <div class="higher-para">
+                    <li> BH202YC (22KT RICH YELLOW) </li>
+                    <li> BH041YU (18-22KT YELLOW) </li>
+                    <li> BH079YC (18KT YELLOW) </li>
+                    <li> BH335YC (18KT YELLOW) </li>
+                    <li> A101 (18KT YELLOW) </li>
+                    <li> SCA4 (18-22KT PINK YELLOW) </li>
+                    <li> C183N3 (18KT RICH YELLOW) </li>
+                    <li> C183NL (18KT NATURAL YELLOW) </li>
+                    <li> YN83C (18KT RICH YELLOW) </li>
+                    <li> YN82D (18KT PALE YELLOW) </li>
+                    <li> YA22WT (22KT HARD YELLOW) </li>
+                    <li> BH041YU (18KT RICH YELLOW/SOLID CHAIN) </li>
+                    <li> BH042YW (22KT RICH YELLOW/SOLID CHAIN) </li>
+                    <li> YA22WT (22KT RICH YELLOW/BANGLE) </li>
+                    <li> SM1 (18KT RICH YELLOW/HOLLOW CHAIN) </li>
+                    <li> SM2 (18KT RICH YELLOW/BANGLE) </li>
+                    <li> B183N (18KT RICH YELLOW/HOLLOW CHAIN) </li>
+                </div>
             </div>
 
         </section>
@@ -2652,9 +2910,12 @@
 
         // Intro loader
         window.addEventListener("load", () => {
-            const loader = document.getElementById("introLoader");
+        const loader = document.getElementById("introLoader");
+
             if (loader) {
-                setTimeout(() => loader.classList.add("hide"), 700);
+                setTimeout(() => {
+                    loader.classList.add("hide");
+                }, 700);
             }
         });
 
@@ -2702,14 +2963,18 @@
 
     </script>
 
-<a href="https://wa.me/917240713574"
-   class="floating-whatsapp"
-   target="_blank"
-   rel="noopener noreferrer"
-   aria-label="Chat on WhatsApp">
+    <a href="https://wa.me/917240713574"
+    class="floating-whatsapp"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Chat on WhatsApp">
 
-    <i class="fa-brands fa-whatsapp"></i>
+        <i class="fa-brands fa-whatsapp"></i>
 
-</a>
+    </a>
+
+    <div id="introLoader">
+        <img src="{{ asset('logo1.png') }}" alt="VS PRODUCT">
+    </div>
 </body>
 </html>

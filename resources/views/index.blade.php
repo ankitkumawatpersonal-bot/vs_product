@@ -87,7 +87,7 @@
 
         .img {
             width: 100px;
-            height: 75px;
+            height: 100px;
             cursor: pointer;
             object-fit: cover;
             transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -1131,7 +1131,7 @@
                 flex-direction: column;
                 align-items: stretch;
                 gap: 0;
-                background: #9b0101;
+                background: #fff;
                 border: 0;
                 border-top: 1px solid rgba(255,255,255,.15);
                 border-radius: 0 0 12px 12px;
@@ -1148,14 +1148,16 @@
                 justify-content: space-between;
                 width: 100%;
                 padding: 14px 4px;
-                color: #000;
+                color: #fff;
                 border-bottom: 1px solid rgba(255,255,255,.14);
                 font-size: 16px;
             }
 
             .navbar a::after { display: none; }
             .navbar a:hover,
-            .navbar a.active { color: #fff; }
+            .navbar a.active { 
+                background: #9b0101;
+                color: #fff; }
             .product-menu { width: 100%; }
 
             .product-popup,
@@ -1169,7 +1171,7 @@
                 padding: 8px 12px;
                 flex-direction: column;
                 gap: 0;
-                background: #9b0101;
+                background: #fff;
                 border: 0;
                 border-radius: 8px;
                 box-shadow: none;
@@ -1587,7 +1589,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 99999;
+    z-index: 999999;
     opacity: 1;
     visibility: visible;
     transition: opacity 0.8s ease, visibility 0.8s ease;
@@ -1595,6 +1597,7 @@
 
 #introLoader img {
     width: 150px;
+    max-width: 60%;
     height: auto;
     opacity: 0;
     animation: logoIntro 1.5s ease forwards;
@@ -1623,13 +1626,28 @@
     }
 }
 
+@media (max-width: 576px) {
+    #introLoader img {
+        width: 120px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #introLoader img {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+}
+
 .hero-slider {
     width: 100%;
-    height: 50vh;
-    min-height: 550px;
+    height: 620px;
+    min-height: 500px;
     position: relative;
     overflow: hidden;
-    background: #fffafa;
+    background: #fff;
+    isolation: isolate;
 }
 
 .slides {
@@ -1641,136 +1659,262 @@
 .slide {
     position: absolute;
     inset: 0;
+    width: 100%;
+    height: 100%;
+
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background: linear-gradient(
-        120deg,
-        #fff,
-        #f9eeee,
-        #fff
-    );
+    padding: 40px 8%;
+
+    background:
+        radial-gradient(
+            circle at 80% 45%,
+            rgba(169, 0, 0, 0.08),
+            transparent 35%
+        ),
+        linear-gradient(120deg, #ffffff, #fff7f7);
 
     opacity: 0;
     visibility: hidden;
-    transform: scale(1.05);
-    transition: opacity 1s ease,
-                transform 1.2s ease,
-                visibility 1s;
+    transform: translateX(40px) scale(1.02);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.9s ease,
+        visibility 0.8s;
+
+    z-index: 0;
 }
 
 .slide.active {
     opacity: 1;
     visibility: visible;
-    transform: scale(1);
-    z-index: 1;
+    transform: translateX(0) scale(1);
+    z-index: 2;
 }
+
+/* Background decoration */
+
+.slide::before {
+    content: "";
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    background: rgba(169, 0, 0, 0.035);
+    right: -100px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: -1;
+}
+
+/* =====================================
+   FIRST SLIDE
+===================================== */
 
 .slide-content {
+    width: 100%;
+    max-width: 950px;
     text-align: center;
-    padding: 20px;
-}
-
-.slide-content1 {
-    text-align: center;
-    padding: 20px;
-    display:flex;
-}
-
-.alloy {
-    text-align: center;
-    padding: 20px;
-    display:grid;
+    position: relative;
+    z-index: 2;
 }
 
 .slide-content h1 {
-    font-size: clamp(40px, 5vw, 80px);
-    font-weight: 800;
-    color: #171717;
-    margin: 0 0 10px;
+    font-size: clamp(38px, 5vw, 65px);
+    font-weight: 600;
+    color: #242424;
+    margin-bottom: 5px;
+    letter-spacing: 2px;
 }
 
 .slide-content h2 {
-    font-size: clamp(40px, 5vw, 80px);
-    font-weight: 800;
+    font-size: clamp(55px, 7vw, 95px);
+    font-weight: 900;
     color: #a90000;
-    margin: 0 0 15px;
+    margin-bottom: 15px;
+    letter-spacing: 3px;
 }
 
 .slide-content p {
-    font-size: 18px;
-    color: #555;
-    margin-bottom: 30px;
+    color: #666;
+    font-size: 19px;
+    letter-spacing: 3px;
+    line-height: 1.7;
+    margin-bottom: 35px;
 }
 
-.slide-content1 h1 {
-    font-size: clamp(40px, 5vw, 60px);
-    font-weight: 800;
-    color: #171717;
-    margin: 0 0 10px;
+/* =====================================
+   PRODUCT SLIDES
+===================================== */
+
+.slide-content1 {
+    width: 100%;
+    max-width: 1250px;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 65px;
+
+    position: relative;
+    z-index: 2;
 }
 
-.slide-content1 h2 {
-    font-size: clamp(40px, 5vw, 50px);
+/* Product Image */
+
+.legor {
+    width: 50%;
+    max-width: 570px;
+    height: 380px;
+
+    object-fit: contain;
+    display: block;
+
+    filter: drop-shadow(
+        0 15px 20px rgba(0, 0, 0, 0.10)
+    );
+
+    animation: productFloat 4s ease-in-out infinite;
+}
+
+@keyframes productFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+/* Product Details */
+
+.alloy {
+    flex: 1;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    text-align: left;
+    padding: 20px 0;
+}
+
+.alloy h1 {
+    font-size: clamp(35px, 4vw, 58px);
     font-weight: 800;
+    color: #202020;
+    line-height: 1.15;
+    margin-bottom: 18px;
+}
+
+.alloy h2 {
+    font-size: clamp(22px, 2.5vw, 32px);
+    font-weight: 700;
     color: #a90000;
-    margin: 0 0 15px;
+    line-height: 1.3;
+    margin-bottom: 18px;
 }
 
-.slide-content1 p {
-    font-size: 18px;
-    color: #555;
-    margin-bottom: 30px;
+.alloy p {
+    max-width: 500px;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #626262;
+    margin-bottom: 25px;
 }
 
-.slider-btn {
-    display: inline-block;
-    padding: 13px 30px;
-    background: #a90000;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: .3s;
-}
+/* =====================================
+   BUTTONS
+===================================== */
 
-.slide-btn1 {
-    display: inline-block;
-    padding: 13px;
-    margin-right: 250px;
-    margin-left: 250px;
-    background: #a90000;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: .3s;
-}
-
+.slider-btn,
+.slide-btn1,
 .slide-btn2 {
-    display: inline-block;
-    padding: 13px;
-    margin-right: 340px;
-    margin-left: 340px;
-    background: #a90000;
-    color: white;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: fit-content;
+
+    padding: 14px 30px;
+    margin: 10px 0 0;
+
+    background: linear-gradient(
+        135deg,
+        #a90000,
+        #d20c0c
+    );
+
+    color: #fff;
     text-decoration: none;
+
+    border: 1px solid #a90000;
     border-radius: 5px;
-    transition: .3s;
+
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+
+    box-shadow: 0 8px 20px rgba(169, 0, 0, 0.17);
+
+    transition: all 0.35s ease;
 }
+
+.slider-btn:hover,
+.slide-btn1:hover,
+.slide-btn2:hover {
+
+    background: #fff;
+    color: #a90000;
+
+    transform: translateY(-4px);
+
+    box-shadow: 0 12px 25px rgba(169, 0, 0, 0.15);
+}
+
+/* =====================================
+   SLIDER ARROWS
+===================================== */
 
 .slider-arrow {
+
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 5;
-    width: 45px;
-    height: 45px;
-    border: none;
+    z-index: 10;
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(169, 0, 0, 0.2);
     border-radius: 50%;
-    background: rgba(255,255,255,.8);
+
+    background: rgba(255, 255, 255, 0.9);
     color: #a90000;
-    font-size: 20px;
+
+    font-size: 19px;
     cursor: pointer;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+
+    transition: all 0.3s ease;
+}
+
+.slider-arrow:hover {
+    background: #a90000;
+    color: #fff;
+    transform: translateY(-50%) scale(1.1);
 }
 
 .prev {
@@ -1781,343 +1925,281 @@
     right: 25px;
 }
 
+/* =====================================
+   SLIDER DOTS
+===================================== */
+
 .slider-dots {
+
     position: absolute;
-    bottom: 30px;
+    bottom: 28px;
     left: 50%;
+
     transform: translateX(-50%);
+
     display: flex;
-    gap: 12px;
-    z-index: 5;
+    align-items: center;
+    gap: 10px;
+
+    z-index: 10;
 }
 
 .dot {
-    width: 12px;
-    height: 12px;
-    background: #bbb;
-    border-radius: 50%;
+    width: 11px;
+    height: 11px;
+
+    background: #d0caca;
+    border-radius: 20px;
+
     cursor: pointer;
+
+    transition: all 0.35s ease;
 }
 
 .dot.active {
+    width: 32px;
     background: #a90000;
-    width: 30px;
-    border-radius: 10px;
 }
 
-.legor{
-    width: 400px;
-    height: 300px;
-    padding-left:-150px;
-    padding-right:150px;
-}
+/* =====================================
+   LAPTOP RESPONSIVE
+===================================== */
 
-@media(max-width: 768px) {
+@media (max-width: 1200px) {
+
     .hero-slider {
-        height: 75vh;
-        min-height: 450px;
+        height: 570px;
     }
 
-    .slide-content p {
-        font-size: 14px;
+    .slide-content1 {
+        gap: 35px;
     }
 
-    .slide-content1 p {
-        font-size: 14px;
+    .legor {
+        height: 320px;
+    }
+
+    .alloy h1 {
+        font-size: 42px;
+    }
+
+    .alloy h2 {
+        font-size: 25px;
+    }
+}
+
+/* =====================================
+   TABLET RESPONSIVE
+===================================== */
+
+@media (max-width: 991px) {
+
+    .hero-slider {
+        height: 650px;
+        min-height: 650px;
+    }
+
+    .slide {
+        padding: 45px 40px 70px;
+    }
+
+    .slide-content1 {
+        flex-direction: column;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .legor {
+        width: 75%;
+        max-width: 350px;
+        height: 260px;
+    }
+
+    .alloy {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+        padding: 5px 0;
+    }
+
+    .alloy h1 {
+        font-size: 35px;
+        margin-bottom: 10px;
+    }
+
+    .alloy h2 {
+        font-size: 23px;
+        margin-bottom: 10px;
+    }
+
+    .alloy p {
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 12px;
     }
 
     .slider-arrow {
-        width: 35px;
-        height: 35px;
+        width: 40px;
+        height: 40px;
     }
 
-    .prev { left: 10px; }
-    .next { right: 10px; }
+    .prev {
+        left: 10px;
+    }
+
+    .next {
+        right: 10px;
+    }
 }
 
+/* =====================================
+   MOBILE RESPONSIVE
+===================================== */
 
+@media (max-width: 576px) {
 
-        /* =====================================================
-           RESPONSIVE LAYOUT: LAPTOP, TABLET, MOBILE & SMALL MOBILE
-           ===================================================== */
-        img, video, iframe {
-            max-width: 100%;
-        }
+    .hero-slider {
+        height: 620px;
+        min-height: 620px;
+    }
 
-        body {
-            overflow-x: hidden;
-        }
+    .slide {
+        padding: 35px 35px 65px;
+    }
 
-        .header {
-            width: 100%;
-            padding-inline: clamp(20px, 5vw, 90px);
-        }
+    .slide-content {
+        padding: 10px;
+    }
 
-        .navbar {
-            margin-right: 0;
-            gap: clamp(18px, 3vw, 48px);
-        }
+    .slide-content h1 {
+        font-size: 32px;
+    }
 
-        .hero-slider {
-            height: clamp(480px, 58vw, 680px);
-            min-height: 480px;
-        }
+    .slide-content h2 {
+        font-size: 48px;
+        letter-spacing: 1px;
+    }
 
-        .slide-content1 {
-            width: min(1100px, 92%);
-            align-items: center;
-            justify-content: center;
-            gap: clamp(20px, 4vw, 55px);
-            margin: 0 auto;
-        }
+    .slide-content p {
+        font-size: 13px;
+        letter-spacing: 1px;
+        line-height: 1.7;
+    }
 
-        .alloy {
-            min-width: 0;
-            flex: 1;
-            justify-items: center;
-            gap: 8px;
-        }
+    .slide-content1 {
+        gap: 12px;
+    }
 
-        .slide-btn1,
-        .slide-btn2 {
-            margin: 12px 0 0;
-        }
+    .legor {
+        width: 85%;
+        max-width: 270px;
+        height: 210px;
+    }
 
-        .legor {
-            width: min(38vw, 400px);
-            height: auto;
-            max-height: 300px;
-            object-fit: contain;
-            padding: 0;
-        }
+    .alloy h1 {
+        font-size: 29px;
+        line-height: 1.2;
+    }
 
-        .products-container {
-            width: min(94%, 1450px);
-        }
+    .alloy h2 {
+        font-size: 19px;
+    }
 
-        .footer-container {
-            width: min(100%, 1200px);
-            margin-inline: auto;
-        }
+    .alloy p {
+        font-size: 13px;
+        line-height: 1.6;
+    }
 
-        .floating-whatsapp {
-            right: 28px;
-            bottom: 25px;
-        }
+    .slider-btn,
+    .slide-btn1,
+    .slide-btn2 {
+        padding: 11px 22px;
+        font-size: 13px;
+    }
 
-        /* Laptop and small desktop */
-        @media (min-width: 821px) and (max-width: 1200px) {
-            .header {
-                padding: 14px 32px;
-            }
+    .slider-arrow {
+        width: 34px;
+        height: 34px;
+        font-size: 14px;
+    }
 
-            .img {
-                width: 82px;
-                height: 68px;
-            }
+    .prev {
+        left: 7px;
+    }
 
-            .navbar {
-                gap: 24px;
-            }
+    .next {
+        right: 7px;
+    }
 
-            .navbar a {
-                font-size: 15px;
-            }
+    .slider-dots {
+        bottom: 18px;
+        gap: 7px;
+    }
 
-            .hero-slider {
-                min-height: 500px;
-            }
+    .dot {
+        width: 8px;
+        height: 8px;
+    }
 
-            .slide-content h1,
-            .slide-content h2,
-            .slide-content1 h1,
-            .slide-content1 h2 {
-                font-size: clamp(30px, 4vw, 48px);
-            }
+    .dot.active {
+        width: 23px;
+    }
+}
 
-            .products-container {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 24px;
-            }
+/* =====================================
+   EXTRA SMALL MOBILE
+===================================== */
 
-            .product-card {
-                min-height: 420px;
-            }
-        }
+@media (max-width: 375px) {
 
-        /* Tablet and mobile navigation */
-        @media (max-width: 820px) {
-            .header {
-                position: sticky;
-                top: 0;
-                padding: 9px 18px;
-                min-height: 70px;
-            }
+    .hero-slider {
+        height: 580px;
+        min-height: 580px;
+    }
 
-            .navbar {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                width: 100%;
-                margin: 0;
-                max-height: calc(100dvh - 70px);
-                overflow-y: auto;
-                padding: 12px 20px 18px;
-                gap: 0;
-                align-items: stretch;
-                background: #9b0101;
-            }
+    .slide {
+        padding: 30px 30px 60px;
+    }
 
-            .navbar > a,
-            .navbar .product-menu > .product-link {
-                width: 100%;
-                color: #fff;
-                padding: 13px 5px;
-                text-align: left;
-            }
+    .slide-content h1 {
+        font-size: 27px;
+    }
 
-            .navbar a:hover,
-            .navbar a.active {
-                color: #fff;
-            }
+    .slide-content h2 {
+        font-size: 39px;
+    }
 
-            .product-menu { width: 100%; }
+    .legor {
+        height: 175px;
+        width: 90%;
+    }
 
-            .product-popup,
-            .product-popup1,
-            .product-popup2 {
-                position: static;
-                width: 100%;
-                max-width: 100%;
-                margin: 0;
-                padding: 5px 12px;
-                transform: none;
-            }
+    .alloy h1 {
+        font-size: 25px;
+    }
 
-            .hero-slider {
-                height: auto;
-                min-height: 440px;
-            }
+    .alloy h2 {
+        font-size: 17px;
+    }
 
-            .slide {
-                padding: 55px 42px 70px;
-            }
+    .alloy p {
+        font-size: 12px;
+    }
+}
 
-            .slide-content1 {
-                flex-direction: column;
-                width: 100%;
-                gap: 12px;
-            }
+/* Reduced motion accessibility */
 
-            .legor {
-                width: min(55vw, 260px);
-                max-height: 190px;
-            }
+@media (prefers-reduced-motion: reduce) {
+    .slide,
+    .legor,
+    .slider-arrow,
+    .dot {
+        animation: none;
+        transition: none;
+    }
+}
 
-            .alloy {
-                width: 100%;
-                padding: 8px 0;
-            }
-
-            .slide-content h1,
-            .slide-content h2,
-            .slide-content1 h1,
-            .slide-content1 h2 {
-                font-size: clamp(28px, 5vw, 42px);
-                line-height: 1.15;
-            }
-
-            .slide-content p,
-            .slide-content1 p {
-                font-size: 15px;
-                line-height: 1.5;
-                margin-bottom: 12px;
-            }
-
-            .slide-btn1,
-            .slide-btn2 {
-                margin: 8px 0 0;
-                padding: 11px 20px;
-            }
-
-            .slider-arrow {
-                width: 36px;
-                height: 36px;
-                font-size: 16px;
-            }
-
-            .prev { left: 8px; }
-            .next { right: 8px; }
-
-            .page2 { padding: 60px 20px; }
-            .products-container {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                width: 100%;
-                gap: 20px;
-            }
-
-            .product-card {
-                min-height: 390px;
-                padding: 18px 12px;
-            }
-
-            .product-image-link { height: 230px; }
-            .diem h2 { letter-spacing: 2px; }
-            .diem h3 { text-align: center; padding: 0; letter-spacing: 2px; }
-
-            .floating-whatsapp {
-                right: 18px;
-                bottom: 18px;
-                width: 52px;
-                height: 52px;
-                font-size: 30px;
-            }
-        }
-
-        /* Mobile phones */
         @media (max-width: 600px) {
-            .hero-slider {
-                min-height: 600px;
-            }
-
-            .slide {
-                padding: 250px 34px 65px;
-            }
-
-            .slide-content { padding: 10px 0; }
-            .slide-content1 { gap: 8px; }
-
-            .legor {
-                width: min(58vw, 210px);
-                max-height: 145px;
-            }
-
-            .slide-content h1,
-            .slide-content h2,
-            .slide-content1 h1,
-            .slide-content1 h2 {
-                font-size: clamp(25px, 7vw, 34px);
-                margin-bottom: 8px;
-            }
-
-            .slide-content p,
-            .slide-content1 p {
-                font-size: 13px;
-                margin-bottom: 10px;
-            }
-
-            .slider-btn,
-            .slide-btn1,
-            .slide-btn2 {
-                padding: 10px 16px;
-                font-size: 14px;
-            }
-
-            .slider-dots { bottom: 18px; gap: 8px; }
-            .dot { width: 9px; height: 9px; }
-            .dot.active { width: 22px; }
-
             .page2 { padding: 45px 14px 55px; }
             .products-title { font-size: 30px; margin-bottom: 35px; }
             .products-container {
@@ -2176,19 +2258,23 @@
             .img { width: 48px; height: 48px; }
             .menu-toggle span { width: 23px; }
 
-            .hero-slider { min-height: 390px; }
-            .slide { padding: 42px 28px 58px; }
-            .legor { width: min(54vw, 175px); max-height: 120px; }
-
-            .slide-content h1,
-            .slide-content h2,
-            .slide-content1 h1,
-            .slide-content1 h2 {
-                font-size: 24px;
+            .hero-slider {
+                height: 580px;
+                min-height: 580px;
             }
 
-            .slide-content p,
-            .slide-content1 p { font-size: 12px; }
+            .slide { padding: 30px 30px 60px; }
+            .slide-content h1 { font-size: 27px; }
+            .slide-content h2 { font-size: 39px; }
+            .legor {
+                width: 90%;
+                max-width: 175px;
+                height: 175px;
+                max-height: none;
+            }
+            .alloy h1 { font-size: 25px; }
+            .alloy h2 { font-size: 17px; }
+            .alloy p { font-size: 12px; }
 
             .page2 { padding: 38px 10px 45px; }
             .products-title { font-size: 27px; }
@@ -2207,16 +2293,64 @@
             }
         }
 
+
+        /* Final hero-slider overrides */
+        .hero-slider { width: 100%; position: relative; overflow: hidden; }
+        .hero-slider .slide { box-sizing: border-box; }
+        .hero-slider .slide-content1 { min-width: 0; }
+        .hero-slider .legor { flex: 0 1 50%; min-width: 0; }
+
+        @media (max-width: 991px) {
+            .hero-slider { height: 650px; min-height: 650px; }
+            .hero-slider .slide-content1 {
+                flex-direction: column;
+                justify-content: center;
+                gap: 14px;
+            }
+            .hero-slider .legor {
+                flex: 0 1 auto;
+                width: min(75%, 350px);
+                height: 250px;
+            }
+            .hero-slider .alloy {
+                width: 100%;
+                align-items: center;
+                text-align: center;
+                padding: 0;
+            }
+            .hero-slider .alloy h1 { font-size: clamp(26px, 4.5vw, 35px); }
+            .hero-slider .alloy h2 { font-size: clamp(18px, 3vw, 23px); }
+            .hero-slider .alloy p { font-size: 14px; line-height: 1.55; margin-bottom: 10px; }
+        }
+
+        @media (max-width: 576px) {
+            .hero-slider { height: 620px; min-height: 620px; }
+            .hero-slider .slide { padding: 35px 34px 65px; }
+            .hero-slider .legor { width: min(85%, 270px); height: 205px; }
+            .hero-slider .alloy h1 { font-size: clamp(24px, 7vw, 29px); }
+            .hero-slider .alloy h2 { font-size: clamp(17px, 5vw, 19px); }
+            .hero-slider .alloy p { font-size: 13px; }
+            .hero-slider .slider-arrow { width: 34px; height: 34px; font-size: 14px; }
+            .hero-slider .prev { left: 7px; }
+            .hero-slider .next { right: 7px; }
+        }
+
+        @media (max-width: 380px) {
+            .hero-slider { height: 580px; min-height: 580px; }
+            .hero-slider .slide { padding: 30px 30px 60px; }
+            .hero-slider .legor { width: min(90%, 175px); height: 175px; }
+            .hero-slider .alloy h1 { font-size: 25px; }
+            .hero-slider .alloy h2 { font-size: 17px; }
+            .hero-slider .alloy p { font-size: 12px; }
+        }
+
     </style>
 </head>
 <body>
     <div class="page1">
-        <div id="introLoader">
-            <img src="{{ asset('logo.webp') }}" alt="VS PRODUCT">
-        </div>
         <header class="header">
             <div class="logo">
-                <img class="img" src="logo.webp" alt="logo" onerror="this.style.background='var(--text)'">
+                <img class="img" src="logo1.png" alt="logo" onerror="this.style.background='var(--text)'">
             </div>
 
             <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false">
@@ -2273,79 +2407,254 @@
             
         </header>
 
-        <section class="hero-slider">
+        <!-- =====================================
+     HERO SLIDER HTML
+===================================== -->
+
+<section class="hero-slider">
 
     <div class="slides">
 
+        <!-- SLIDE 1 -->
+
         <div class="slide active">
+
             <div class="slide-content">
+
                 <h1>Welcome To</h1>
+
                 <h2>VS PRODUCT</h2>
+
                 <p>Innovation • Quality • Technology</p>
-                <a href="/about" class="slider-btn">Explore More</a>
+
+                <a href="/about" class="slider-btn">
+                    Explore More
+                </a>
+
             </div>
+
         </div>
 
+
+        <!-- SLIDE 2 -->
+
         <div class="slide">
+
             <div class="slide-content1">
-                <img class="legor" src="legor1.png" Alt="Legor Alloys">
+
+                <img
+                    class="legor"
+                    src="{{ asset('legor alloy.png') }}"
+                    alt="Legor Alloys"
+                >
+
                 <div class="alloy">
+
                     <h1>Legor Alloys</h1>
+
                     <h2>Advanced Alloys Solutions</h2>
-                    <p>Powering Precision and Innovation in Jewellery Manufacturing</p>
-                    <a href="/jewellery" class="slide-btn1">Our Products</a>
+
+                    <p>
+                        Powering Precision and Innovation
+                        in Jewellery Manufacturing.
+                    </p>
+
+                    <a href="/jewellery" class="slide-btn1">
+                        Our Products
+                    </a>
+
                 </div>
+
             </div>
+
         </div>
 
-        <div class="slide">
-            <div class="slide-content1">
-                <img class="legor" src="powder.png" Alt="Powder Investment Machine">
-                <div class="alloy">
-                    <h1> Powder Investment Machine </h1>
-                    <h2> Powerful Vacuum System </h2>
-                    <p> Consistent Mix. Stronger Moduls. Better Castings.</p>
-                    <a href="/jewellery" class="slide-btn2">Our Products</a>
-                </div>
-            </div>
-        </div>
+
+        <!-- SLIDE 3 -->
 
         <div class="slide">
+
             <div class="slide-content1">
-                <img class="legor" src="burnout.png" Alt="Burnout Furnace">
+
+                <img
+                    class="legor"
+                    src="{{ asset('elite0.png') }}"
+                    alt="SRS Spin Grinder"
+                >
+
                 <div class="alloy">
-                    <h1> Burnout Furnace </h1>
-                    <h2> Precision Heat Technology </h2>
-                    <p> Reliable Heating Solutions for Precision Jewellery Manufacturing</p>
-                    <a href="/jewellery" class="slide-btn1">Our Products</a>
+
+                    <h1>SRS Spin Grinder</h1>
+
+                    <h2>Automation for Jewellery Grinding & Filing</h2>
+
+                    <p>
+                        Smarter jewellery grinding with
+                        advanced automation technology.
+                    </p>
+
+                    <a href="/jewellery" class="slide-btn2">
+                        Our Products
+                    </a>
+
                 </div>
+
             </div>
+
         </div>
 
+
+        <!-- SLIDE 4 -->
+
         <div class="slide">
+
             <div class="slide-content1">
-                <img class="legor" src="legor2.png" Alt="Rhodium">
+
+                <img
+                    class="legor"
+                    src="{{ asset('powder.png') }}"
+                    alt="Powder Investment Machine"
+                >
+
                 <div class="alloy">
-                    <h1> Rhodium Plating Solutions </h1>
-                    <h2> Brilliant Shine. Lasting Protection. </h2>
-                    <p> Premium Rhodium Plating Solutions for a Brilliant, Durable and Long-Lasting Jewellery Finish.</p>
-                    <a href="/jewellery" class="slide-btn2">Our Products</a>
+
+                    <h1>Powder Investment Machine</h1>
+
+                    <h2>Powerful Vacuum System</h2>
+
+                    <p>
+                        Consistent Mix. Stronger Modules.
+                        Better Castings.
+                    </p>
+
+                    <a href="/jewellery" class="slide-btn2">
+                        Our Products
+                    </a>
+
                 </div>
+
             </div>
+
+        </div>
+
+
+        <!-- SLIDE 5 -->
+
+        <div class="slide">
+
+            <div class="slide-content1">
+
+                <img
+                    class="legor"
+                    src="{{ asset('burnout.png') }}"
+                    alt="Burnout Furnace"
+                >
+
+                <div class="alloy">
+
+                    <h1>Burnout Furnace</h1>
+
+                    <h2>Precision Heat Technology</h2>
+
+                    <p>
+                        Reliable Heating Solutions for
+                        Precision Jewellery Manufacturing.
+                    </p>
+
+                    <a href="/jewellery" class="slide-btn1">
+                        Our Products
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SLIDE 6 -->
+
+        <div class="slide">
+
+            <div class="slide-content1">
+
+                <img
+                    class="legor"
+                    src="{{ asset('legor plating.png') }}"
+                    alt="Rhodium Plating Solutions"
+                >
+
+                <div class="alloy">
+
+                    <h1>Rhodium Plating Solutions</h1>
+
+                    <h2>Brilliant Shine. Lasting Protection.</h2>
+
+                    <p>
+                        Premium Rhodium Plating Solutions
+                        for a Brilliant, Durable and
+                        Long-Lasting Jewellery Finish.
+                    </p>
+
+                    <a href="/jewellery" class="slide-btn2">
+                        Our Products
+                    </a>
+
+                </div>
+
+            </div>
+
         </div>
 
     </div>
 
-    <button class="slider-arrow prev" onclick="changeSlide(-1)">&#10094;</button>
-    <button class="slider-arrow next" onclick="changeSlide(1)">&#10095;</button>
+
+    <!-- PREVIOUS BUTTON -->
+
+    <button
+        type="button"
+        class="slider-arrow prev"
+        onclick="changeSlide(-1)"
+        aria-label="Previous slide"
+    >
+        &#10094;
+    </button>
+
+
+    <!-- NEXT BUTTON -->
+
+    <button
+        type="button"
+        class="slider-arrow next"
+        onclick="changeSlide(1)"
+        aria-label="Next slide"
+    >
+        &#10095;
+    </button>
+
+
+    <!-- SLIDER DOTS -->
 
     <div class="slider-dots">
-        <span class="dot active" onclick="currentSlide(0)"></span>
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-        <span class="dot" onclick="currentSlide(4)"></span>
-        
+
+        <span class="dot active"
+              onclick="currentSlide(0)"></span>
+
+        <span class="dot"
+              onclick="currentSlide(1)"></span>
+
+        <span class="dot"
+              onclick="currentSlide(2)"></span>
+
+        <span class="dot"
+              onclick="currentSlide(3)"></span>
+
+        <span class="dot"
+              onclick="currentSlide(4)"></span>
+
+        <span class="dot"
+              onclick="currentSlide(5)"></span>
+
     </div>
 
 </section>
@@ -2395,6 +2704,7 @@
                 </div>
 
             </div>
+            
 
         </div>
     </section>
@@ -2722,36 +3032,56 @@
 
         // Intro loader
         window.addEventListener("load", () => {
-            const loader = document.getElementById("introLoader");
-            if (loader) {
-                setTimeout(() => loader.classList.add("hide"), 700);
-            }
-        });
+        const loader = document.getElementById("introLoader");
+
+        if (loader) {
+            setTimeout(() => {
+                loader.classList.add("hide");
+            }, 700);
+        }
+    });
 
         // Hero slider
-        const slides = document.querySelectorAll(".slide");
-        const dots = document.querySelectorAll(".dot");
+        const heroSlider = document.querySelector(".hero-slider");
+        const slides = heroSlider ? heroSlider.querySelectorAll(".slide") : [];
+        const dots = heroSlider ? heroSlider.querySelectorAll(".dot") : [];
         let slideIndex = 0;
-        let sliderTimer;
+        let sliderTimer = null;
+        let touchStartX = 0;
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
         function showSlide(index) {
             if (!slides.length) return;
 
-            slides.forEach(slide => slide.classList.remove("active"));
-            dots.forEach(dot => dot.classList.remove("active"));
+            slideIndex = ((index % slides.length) + slides.length) % slides.length;
 
-            slideIndex = (index + slides.length) % slides.length;
-            slides[slideIndex].classList.add("active");
-            if (dots[slideIndex]) dots[slideIndex].classList.add("active");
+            slides.forEach((slide, i) => {
+                const isActive = i === slideIndex;
+                slide.classList.toggle("active", isActive);
+                slide.setAttribute("aria-hidden", String(!isActive));
+            });
+
+            dots.forEach((dot, i) => {
+                const isActive = i === slideIndex;
+                dot.classList.toggle("active", isActive);
+                dot.setAttribute("aria-current", isActive ? "true" : "false");
+            });
+        }
+
+        function stopSlider() {
+            if (sliderTimer) {
+                clearInterval(sliderTimer);
+                sliderTimer = null;
+            }
         }
 
         function startSlider() {
-            if (slides.length < 2) return;
+            stopSlider();
+            if (slides.length < 2 || prefersReducedMotion) return;
             sliderTimer = setInterval(() => showSlide(slideIndex + 1), 5000);
         }
 
         function restartSlider() {
-            clearInterval(sliderTimer);
             startSlider();
         }
 
@@ -2765,21 +3095,47 @@
             restartSlider();
         }
 
-        if (slides.length) {
+        if (heroSlider && slides.length) {
             showSlide(0);
+
+            heroSlider.addEventListener("mouseenter", stopSlider);
+            heroSlider.addEventListener("mouseleave", startSlider);
+
+            heroSlider.addEventListener("touchstart", event => {
+                touchStartX = event.changedTouches[0].screenX;
+                stopSlider();
+            }, { passive: true });
+
+            heroSlider.addEventListener("touchend", event => {
+                const touchEndX = event.changedTouches[0].screenX;
+                const swipeDistance = touchStartX - touchEndX;
+
+                if (Math.abs(swipeDistance) > 45) {
+                    showSlide(slideIndex + (swipeDistance > 0 ? 1 : -1));
+                }
+
+                startSlider();
+            }, { passive: true });
+
             startSlider();
         }
 
+
+        
+
     </script>
 
-<a href="https://wa.me/917240713574"
-   class="floating-whatsapp"
-   target="_blank"
-   rel="noopener noreferrer"
-   aria-label="Chat on WhatsApp">
+    <a href="https://wa.me/917240713574"
+    class="floating-whatsapp"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Chat on WhatsApp">
 
-    <i class="fa-brands fa-whatsapp"></i>
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
-</a>
+    <div id="introLoader">
+            <img src="{{ asset('logo1.png') }}" alt="VS PRODUCT">
+    </div>
 </body>
 </html>
