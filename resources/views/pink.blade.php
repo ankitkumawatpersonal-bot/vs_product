@@ -30,7 +30,7 @@
     <meta name="twitter:description"
         content="Innovative diamond detection and technology solutions by LDTECS.">
     <link rel="icon" type="image/png" href="/logo1.png?v=15">
-    <link rel="shortcut icon" href="/logo.webp?v=15">
+    <link rel="shortcut icon" href="/logo1.png?v=15">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css" integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
     <style>
@@ -101,7 +101,7 @@
             display: flex;
             align-items: center;
             gap:60px;
-            margin-right:300px; 
+            margin-right: 20px; 
         }
 
         .navbar a {
@@ -190,7 +190,8 @@
             }
 
             .product-popup,.product-popup1,
-            .product-popup2{
+            .product-popup2,
+            .product-popup3{
                 position: absolute;
                 width:200%;
                 margin-top: 4px;
@@ -200,7 +201,8 @@
             }
 
             .product-menu:hover .product-popup,.product-popup1,
-            .product-popup2 {
+            .product-popup2,
+            .product-popup3 {
                 transform: none;
             }
 
@@ -305,6 +307,33 @@
             gap: 10px;
         }
 
+        .product-popup3 {
+            position: absolute;
+            top: calc(70% + 20px);
+            left: 60px;
+            width: 150px;
+            height: 120px;
+            border-radius: 8px;
+            padding: 15px 20px;
+            background-color: #fff;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+
+            opacity: 0;
+            visibility: hidden;
+            transform: translate(-50%, 10px);
+            transition: opacity 0.3s ease,
+                        transform 0.3s ease,
+                        visibility 0.3s ease;
+
+            z-index: 1000;
+            text-align: left;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+
         .product-menu:hover .product-popup {
             opacity: 1;
             visibility: visible;
@@ -317,6 +346,12 @@
         }
 
         .product-menu:hover .product-popup2{
+            opacity:1;
+            visibility:visible;
+            transform:translate(-50%,0)
+        }
+
+        .product-menu:hover .product-popup3{
             opacity:1;
             visibility:visible;
             transform:translate(-50%,0)
@@ -346,6 +381,14 @@
             text-decoration: none;
         }
 
+        .product-popup3 a{
+            display: block;
+            padding: 8px 15px;
+            margin: 0;
+            line-height: 1.4;
+            text-decoration: none;
+        }
+
         .product-popup a:hover{
             background: #9b0101;
             color: #fff;
@@ -365,6 +408,12 @@
         }
 
         .product-popup2 a:hover{
+            background: #9b0101;
+            color: #fff;
+            border-radius: 8px;
+        }
+
+        .product-popup3 a:hover{
             background: #9b0101;
             color: #fff;
             border-radius: 8px;
@@ -1167,7 +1216,8 @@
 
             .product-popup,
             .product-popup1,
-            .product-popup2 {
+            .product-popup2,
+            .product-popup3 {
                 display: none;
                 position: static;
                 width: 100%;
@@ -1187,13 +1237,15 @@
 
             .product-menu.mobile-open .product-popup,
             .product-menu.mobile-open .product-popup1,
-            .product-menu.mobile-open .product-popup2 {
+            .product-menu.mobile-open .product-popup2,
+            .product-menu.mobile-open .product-popup3 {
                 display: flex;
             }
 
             .product-menu:hover .product-popup,
             .product-menu:hover .product-popup1,
-            .product-menu:hover .product-popup2 {
+            .product-menu:hover .product-popup2
+            .product-menu:hover .product-popup3 {
                 opacity: 1;
                 visibility: visible;
                 transform: none;
@@ -2016,7 +2068,7 @@
         }
 
         .yellow-cta:hover {
-            background: #f0bd17;
+            background: #E8A080;
             color: #073b77;
             transform: translateY(-3px);
         }
@@ -2130,16 +2182,16 @@
     left: 19px;
     top: 50%;
     transform: translateY(-50%);
-    color: #c39543;
+    color: #E8A080;
     font-size: 18px;
 }
 
 .higher-para li:hover {
     transform: translateY(-6px);
-    border-color: #c39543;
+    border-color: #E8A080;
     box-shadow: 0 12px 28px rgba(145, 105, 38, 0.13);
     background: #fffdf8;
-    color: #a4772c;
+    color: #d88866;
 }
 
 
@@ -2345,8 +2397,15 @@
                     </div>
                 </div>
                 
-                <a href="/">About Us</a>
-                <a class="contact-btn" id="openContact">Contact Us</a>
+                <a href="/"> Diamond Testing Machine </a>
+                <a href="/"> Gold Testing Machine </a>
+                <div class="product-menu">
+                    <a href="#cansumables" class="product-link"> About<i class="fa-solid fa-chevron-down"></i></a>
+                    <div class="product-popup3">
+                        <a href="/chemical-cansumables"> About Us </a>
+                        <a class="contact-btn" id="openContact">Contact Us</a>
+                    </div>
+                </div>
             </nav>
             
         </header>
@@ -2376,7 +2435,7 @@
                 </h2>
 
                 <p class="yellow-description">
-                    LEGOR Yellow Alloys are developed for jewellery
+                    LEGOR Pink Alloys are developed for jewellery
                     manufacturers seeking consistent colour, reliable
                     processing and excellent manufacturing performance.
                 </p>
@@ -2386,7 +2445,7 @@
 
                     <div class="feature">
                         <div class="feature-icon">♢</div>
-                        <p>Brilliant<br>Yellow Colour</p>
+                        <p>Brilliant<br>Pink Colour</p>
                     </div>
 
                     <div class="feature">
@@ -2416,7 +2475,7 @@
                     </tr>
                     <tr>
                         <td>Product</td>
-                        <td>Yellow Alloys</td>
+                        <td>Pink Alloys</td>
                     </tr>
                     <tr>
                         <td>Product Line</td>
@@ -2424,7 +2483,7 @@
                     </tr>
                     <tr>
                         <td>Colour</td> 
-                        <td>Yellow Gold</td>
+                        <td>Pink Gold</td>
                     </tr>
                     <tr>
                         <td>Applications</td>
@@ -2444,23 +2503,18 @@
             <div class="casting">
                 <h1 class="higher-karatage"> Higher Karatage </h1>
                 <div class="higher-para">
-                    <li> BH202YC (22KT RICH YELLOW) </li>
-                    <li> BH041YU (18-22KT YELLOW) </li>
-                    <li> BH079YC (18KT YELLOW) </li>
-                    <li> BH335YC (18KT YELLOW) </li>
-                    <li> A101 (18KT YELLOW) </li>
-                    <li> SCA4 (18-22KT PINK YELLOW) </li>
-                    <li> C183N3 (18KT RICH YELLOW) </li>
-                    <li> C183NL (18KT NATURAL YELLOW) </li>
-                    <li> YN83C (18KT RICH YELLOW) </li>
-                    <li> YN82D (18KT PALE YELLOW) </li>
-                    <li> YA22WT (22KT HARD YELLOW) </li>
-                    <li> BH041YU (18KT RICH YELLOW/SOLID CHAIN) </li>
-                    <li> BH042YW (22KT RICH YELLOW/SOLID CHAIN) </li>
-                    <li> YA22WT (22KT RICH YELLOW/BANGLE) </li>
-                    <li> SM1 (18KT RICH YELLOW/HOLLOW CHAIN) </li>
-                    <li> SM2 (18KT RICH YELLOW/BANGLE) </li>
-                    <li> B183N (18KT RICH YELLOW/HOLLOW CHAIN) </li>
+                    <li> BH031RU (18KT ROSE) </li>
+                    <li> BH103RU (18KT ROSE) </li>
+                    <li> BH102RU (18KT ROSE) </li>
+                    <li> BH111RC (18KT PINK) </li>
+                    <li> OR440D (18KT ROSE) </li>
+                    <li> ANTARES-10 (18KT ROSE) </li>
+                    <li> OR133 (18KT PINK) </li>
+                    <li> C145N (18KT PINK) </li>
+                    <li> BH031RU (18KT ROSE/HOLLOW CHAIN) </li>
+                    <li> BH102RU (18KT ROSE/SOLID CHAIN) </li>
+                    <li> ANTARES-10 (18KT ROSE/SOLID CHAIN)  </li>
+                    <li> OR133 (18KT PINK/SOLID CHAIN) </li>
                 </div>
             </div>
 
@@ -2470,13 +2524,12 @@
             <div class="casting">
                 <h1 class="higher-karatage"> Lower Karatage </h1>
                 <div class="higher-para">
-                    <li> BH057YC (9-14KT YELLOW) </li>
-                    <li> A101 (9-14KT RICH YELLOW)  </li>
-                    <li> A202 (9-14KT RICH YELLOW) </li>
-                    <li> SCA5 (9-14KT GREEN YELLOW) </li>
-                    <li> Y143W (9-14KT RICH YELLOW/HOLLOW CHAIN) </li>
-                    <li> SM5 (9-14KT RICH YELLOW/BANGLE) </li>
-                    <li> Y145TL (9-14KT RICH YELLOW/SOLID CHAIN) </li>
+                    <li> BH117RC (9-14KT RED) </li>
+                    <li> BH112RC (9-14KT PINK)  </li>
+                    <li> ANTARES-02 (9-14KT ROSE) </li>
+                    <li> SC145N (9-14 KT PINK) </li>
+                    <li> OR129WE (9-14KT PINK/HOLLOW CHAIN) </li>
+                    <li> OR133 (9-14KT ROSE/SOLID CHAIN) </li>
                 </div>
             </div>
 

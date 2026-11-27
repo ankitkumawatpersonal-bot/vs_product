@@ -30,7 +30,7 @@
     <meta name="twitter:description"
         content="Innovative diamond detection and technology solutions by LDTECS.">
     <link rel="icon" type="image/png" href="/logo1.png?v=15">
-    <link rel="shortcut icon" href="/logo.webp?v=15">
+    <link rel="shortcut icon" href="/logo1.png?v=15">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css" integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
     <style>
@@ -101,7 +101,7 @@
             display: flex;
             align-items: center;
             gap:60px;
-            margin-right:300px; 
+            margin-right:20px; 
         }
 
         .navbar a {
@@ -190,7 +190,8 @@
             }
 
             .product-popup,.product-popup1,
-            .product-popup2{
+            .product-popup2,
+            .product-popup3{
                 position: absolute;
                 width:200%;
                 margin-top: 4px;
@@ -200,7 +201,8 @@
             }
 
             .product-menu:hover .product-popup,.product-popup1,
-            .product-popup2 {
+            .product-popup2,
+            .product-popup3 {
                 transform: none;
             }
 
@@ -305,6 +307,33 @@
             gap: 10px;
         }
 
+        .product-popup3 {
+            position: absolute;
+            top: calc(70% + 20px);
+            left: 60px;
+            width: 150px;
+            height: 120px;
+            border-radius: 8px;
+            padding: 15px 20px;
+            background-color: #fff;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+
+            opacity: 0;
+            visibility: hidden;
+            transform: translate(-50%, 10px);
+            transition: opacity 0.3s ease,
+                        transform 0.3s ease,
+                        visibility 0.3s ease;
+
+            z-index: 1000;
+            text-align: left;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+
         .product-menu:hover .product-popup {
             opacity: 1;
             visibility: visible;
@@ -317,6 +346,12 @@
         }
 
         .product-menu:hover .product-popup2{
+            opacity:1;
+            visibility:visible;
+            transform:translate(-50%,0)
+        }
+
+        .product-menu:hover .product-popup3{
             opacity:1;
             visibility:visible;
             transform:translate(-50%,0)
@@ -346,6 +381,14 @@
             text-decoration: none;
         }
 
+        .product-popup3 a{
+            display: block;
+            padding: 8px 15px;
+            margin: 0;
+            line-height: 1.4;
+            text-decoration: none;
+        }
+
         .product-popup a:hover{
             background: #9b0101;
             color: #fff;
@@ -365,6 +408,12 @@
         }
 
         .product-popup2 a:hover{
+            background: #9b0101;
+            color: #fff;
+            border-radius: 8px;
+        }
+
+        .product-popup3 a:hover{
             background: #9b0101;
             color: #fff;
             border-radius: 8px;
@@ -1167,7 +1216,8 @@
 
             .product-popup,
             .product-popup1,
-            .product-popup2 {
+            .product-popup2,
+            .product-popup3 {
                 display: none;
                 position: static;
                 width: 100%;
@@ -1187,13 +1237,15 @@
 
             .product-menu.mobile-open .product-popup,
             .product-menu.mobile-open .product-popup1,
-            .product-menu.mobile-open .product-popup2 {
+            .product-menu.mobile-open .product-popup2,
+            .product-menu.mobile-open .product-popup3 {
                 display: flex;
             }
 
             .product-menu:hover .product-popup,
             .product-menu:hover .product-popup1,
-            .product-menu:hover .product-popup2 {
+            .product-menu:hover .product-popup2,
+            .product-menu:hover .product-popup3 {
                 opacity: 1;
                 visibility: visible;
                 transform: none;
@@ -2345,8 +2397,15 @@
                     </div>
                 </div>
                 
-                <a href="/">About Us</a>
-                <a class="contact-btn" id="openContact">Contact Us</a>
+                <a href="/"> Diamond Testing Machine </a>
+                <a href="/"> Gold Testing Machine </a>
+                <div class="product-menu">
+                    <a href="#cansumables" class="product-link"> About<i class="fa-solid fa-chevron-down"></i></a>
+                    <div class="product-popup3">
+                        <a href="/chemical-cansumables"> About Us </a>
+                        <a class="contact-btn" id="openContact">Contact Us</a>
+                    </div>
+                </div>
             </nav>
             
         </header>
