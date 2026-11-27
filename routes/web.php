@@ -5,3 +5,4 @@ use App\Http\Controllers\VsController;
 
 Route::get('/', [VsController::class, 'index'])->name('home');
 Route::view('/yellow', 'yellow');
+Route::view('/pink', 'pink');

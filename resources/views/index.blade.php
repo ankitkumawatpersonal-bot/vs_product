@@ -29,7 +29,7 @@
         content="LDTECS | Diamond Detection & Technology Solutions">
     <meta name="twitter:description"
         content="Innovative diamond detection and technology solutions by LDTECS.">
-    <link rel="icon" type="image/png" href="/logo.webp?v=15">
+    <link rel="icon" type="image/png" href="/logo1.png?v=15">
     <link rel="shortcut icon" href="/logo.webp?v=15">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css" integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
@@ -101,7 +101,7 @@
             display: flex;
             align-items: center;
             gap:60px;
-            margin-right:300px; 
+            margin-right:20px; 
         }
 
         .navbar a {
@@ -189,7 +189,8 @@
             }
 
             .product-popup,.product-popup1,
-            .product-popup2{
+            .product-popup2,
+            .product-popup3{
                 position: absolute;
                 width:200%;
                 margin-top: 4px;
@@ -199,7 +200,8 @@
             }
 
             .product-menu:hover .product-popup,.product-popup1,
-            .product-popup2 {
+            .product-popup2,
+            .product-popup3 {
                 transform: none;
             }
 
@@ -304,6 +306,33 @@
             gap: 10px;
         }
 
+        .product-popup3 {
+            position: absolute;
+            top: calc(70% + 20px);
+            left: 60px;
+            width: 150px;
+            height: 120px;
+            border-radius: 8px;
+            padding: 15px 20px;
+            background-color: #fff;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+
+            opacity: 0;
+            visibility: hidden;
+            transform: translate(-50%, 10px);
+            transition: opacity 0.3s ease,
+                        transform 0.3s ease,
+                        visibility 0.3s ease;
+
+            z-index: 1000;
+            text-align: left;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+
         .product-menu:hover .product-popup {
             opacity: 1;
             visibility: visible;
@@ -316,6 +345,12 @@
         }
 
         .product-menu:hover .product-popup2{
+            opacity:1;
+            visibility:visible;
+            transform:translate(-50%,0)
+        }
+
+        .product-menu:hover .product-popup3{
             opacity:1;
             visibility:visible;
             transform:translate(-50%,0)
@@ -345,6 +380,14 @@
             text-decoration: none;
         }
 
+        .product-popup3 a{
+            display: block;
+            padding: 8px 15px;
+            margin: 0;
+            line-height: 1.4;
+            text-decoration: none;
+        }
+
         .product-popup a:hover{
             background: #9b0101;
             color: #fff;
@@ -358,6 +401,12 @@
         }
 
         .product-popup2 a:hover{
+            background: #9b0101;
+            color: #fff;
+            border-radius: 8px;
+        }
+
+        .product-popup3 a:hover{
             background: #9b0101;
             color: #fff;
             border-radius: 8px;
@@ -1162,7 +1211,8 @@
 
             .product-popup,
             .product-popup1,
-            .product-popup2 {
+            .product-popup2,
+            .product-popup3 {
                 display: none;
                 position: static;
                 width: 100%;
@@ -1182,13 +1232,15 @@
 
             .product-menu.mobile-open .product-popup,
             .product-menu.mobile-open .product-popup1,
-            .product-menu.mobile-open .product-popup2 {
+            .product-menu.mobile-open .product-popup2,
+            .product-menu.mobile-open .product-popup3 {
                 display: flex;
             }
 
             .product-menu:hover .product-popup,
             .product-menu:hover .product-popup1,
-            .product-menu:hover .product-popup2 {
+            .product-menu:hover .product-popup2,
+            .product-menu:hover .product-popup3 {
                 opacity: 1;
                 visibility: visible;
                 transform: none;
@@ -2401,263 +2453,306 @@
                     </div>
                 </div>
                 
-                <a href="/">About Us</a>
-                <a class="contact-btn" id="openContact">Contact Us</a>
+                <a href="/"> Diamond Testing Machine </a>
+                <a href="/"> Gold Testing Machine </a>
+                <div class="product-menu">
+                    <a href="#cansumables" class="product-link"> About<i class="fa-solid fa-chevron-down"></i></a>
+                    <div class="product-popup3">
+                        <a href="/chemical-cansumables"> About Us </a>
+                        <a class="contact-btn" id="openContact">Contact Us</a>
+                    </div>
+                </div>
+                
             </nav>
             
         </header>
 
         <!-- =====================================
-     HERO SLIDER HTML
-===================================== -->
+            HERO SLIDER HTML
+        ===================================== -->
 
-<section class="hero-slider">
+        <section class="hero-slider">
 
-    <div class="slides">
+            <div class="slides">
 
-        <!-- SLIDE 1 -->
+                <!-- SLIDE 1 -->
 
-        <div class="slide active">
+                <div class="slide active">
 
-            <div class="slide-content">
+                    <div class="slide-content">
 
-                <h1>Welcome To</h1>
+                        <h1>Welcome To</h1>
 
-                <h2>VS PRODUCT</h2>
+                        <h2>VS PRODUCT</h2>
 
-                <p>Innovation • Quality • Technology</p>
+                        <p>Innovation • Quality • Technology</p>
 
-                <a href="/about" class="slider-btn">
-                    Explore More
-                </a>
+                        <a href="/about" class="slider-btn">
+                            Explore More
+                        </a>
 
-            </div>
+                    </div>
 
-        </div>
+                </div>
 
 
-        <!-- SLIDE 2 -->
+                <!-- SLIDE 2 -->
 
-        <div class="slide">
+                <div class="slide">
 
-            <div class="slide-content1">
+                    <div class="slide-content1">
 
-                <img
-                    class="legor"
-                    src="{{ asset('legor alloy.png') }}"
-                    alt="Legor Alloys"
-                >
+                        <img
+                            class="legor"
+                            src="{{ asset('legor alloy.png') }}"
+                            alt="Legor Alloys"
+                        >
 
-                <div class="alloy">
+                        <div class="alloy">
 
-                    <h1>Legor Alloys</h1>
+                            <h1>Legor Alloys</h1>
 
-                    <h2>Advanced Alloys Solutions</h2>
+                            <h2>Advanced Alloys Solutions</h2>
 
-                    <p>
-                        Powering Precision and Innovation
-                        in Jewellery Manufacturing.
-                    </p>
+                            <p>
+                                Powering Precision and Innovation
+                                in Jewellery Manufacturing.
+                            </p>
 
-                    <a href="/jewellery" class="slide-btn1">
-                        Our Products
-                    </a>
+                            <a href="/jewellery" class="slide-btn1">
+                                Our Products
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- SLIDE 3 -->
+
+                <div class="slide">
+
+                    <div class="slide-content1">
+
+                        <img
+                            class="legor"
+                            src="{{ asset('legor2.png') }}"
+                            alt="Rhodium Plating Solutions"
+                        >
+
+                        <div class="alloy">
+
+                            <h1> Legor Rhodium Plating Solutions</h1>
+
+                            <h2>Brilliant Shine. Lasting Protection.</h2>
+
+                            <p>
+                                Premium Rhodium Plating Solutions
+                                for a Brilliant, Durable and
+                                Long-Lasting Jewellery Finish.
+                            </p>
+
+                            <a href="/jewellery" class="slide-btn2">
+                                Our Products
+                            </a>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
             </div>
 
-        </div>
 
+                <!-- SLIDE 4 -->
 
-        <!-- SLIDE 3 -->
+                <div class="slide">
 
-        <div class="slide">
+                    <div class="slide-content1">
 
-            <div class="slide-content1">
+                        <img
+                            class="legor"
+                            src="{{ asset('elite0.png') }}"
+                            alt="SRS Spin Grinder"
+                        >
 
-                <img
-                    class="legor"
-                    src="{{ asset('elite0.png') }}"
-                    alt="SRS Spin Grinder"
-                >
+                        <div class="alloy">
 
-                <div class="alloy">
+                            <h1>SRS Spin Grinder</h1>
 
-                    <h1>SRS Spin Grinder</h1>
+                            <h2>Automation for Jewellery Grinding & Filing</h2>
 
-                    <h2>Automation for Jewellery Grinding & Filing</h2>
+                            <p>
+                                Smarter jewellery grinding with
+                                advanced automation technology.
+                            </p>
 
-                    <p>
-                        Smarter jewellery grinding with
-                        advanced automation technology.
-                    </p>
+                            <a href="/jewellery" class="slide-btn2">
+                                Our Products
+                            </a>
 
-                    <a href="/jewellery" class="slide-btn2">
-                        Our Products
-                    </a>
+                        </div>
 
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- SLIDE 4 -->
-
-        <div class="slide">
-
-            <div class="slide-content1">
-
-                <img
-                    class="legor"
-                    src="{{ asset('powder.png') }}"
-                    alt="Powder Investment Machine"
-                >
-
-                <div class="alloy">
-
-                    <h1>Powder Investment Machine</h1>
-
-                    <h2>Powerful Vacuum System</h2>
-
-                    <p>
-                        Consistent Mix. Stronger Modules.
-                        Better Castings.
-                    </p>
-
-                    <a href="/jewellery" class="slide-btn2">
-                        Our Products
-                    </a>
+                    </div>
 
                 </div>
 
-            </div>
+                <!-- SLIDE 4 -->
 
-        </div>
+                <div class="slide">
 
+                    <div class="slide-content1">
 
-        <!-- SLIDE 5 -->
+                        <img
+                            class="legor"
+                            src="{{ asset('lite1.png') }}"
+                            alt="SRS Spin Grinder"
+                        >
 
-        <div class="slide">
+                        <div class="alloy">
 
-            <div class="slide-content1">
+                            <h1>SRS Electro Polish Pro+ </h1>
 
-                <img
-                    class="legor"
-                    src="{{ asset('burnout.png') }}"
-                    alt="Burnout Furnace"
-                >
+                            <h2> Automatic Filing and Polishing Pro+ Machine</h2>
 
-                <div class="alloy">
+                            <p>
+                                Detachable tank for Gold, Sliver & Brass
+                            </p>
 
-                    <h1>Burnout Furnace</h1>
+                            <a href="/jewellery" class="slide-btn2">
+                                Our Products
+                            </a>
 
-                    <h2>Precision Heat Technology</h2>
+                        </div>
 
-                    <p>
-                        Reliable Heating Solutions for
-                        Precision Jewellery Manufacturing.
-                    </p>
-
-                    <a href="/jewellery" class="slide-btn1">
-                        Our Products
-                    </a>
+                    </div>
 
                 </div>
 
-            </div>
 
-        </div>
+                <!-- SLIDE 5 -->
 
+                <div class="slide">
 
-        <!-- SLIDE 6 -->
+                    <div class="slide-content1">
 
-        <div class="slide">
+                        <img
+                            class="legor"
+                            src="{{ asset('powder.png') }}"
+                            alt="Powder Investment Machine"
+                        >
 
-            <div class="slide-content1">
+                        <div class="alloy">
 
-                <img
-                    class="legor"
-                    src="{{ asset('legor plating.png') }}"
-                    alt="Rhodium Plating Solutions"
-                >
+                            <h1>Powder Investment Machine</h1>
 
-                <div class="alloy">
+                            <h2>Powerful Vacuum System</h2>
 
-                    <h1>Rhodium Plating Solutions</h1>
+                            <p>
+                                Consistent Mix. Stronger Modules.
+                                Better Castings.
+                            </p>
 
-                    <h2>Brilliant Shine. Lasting Protection.</h2>
+                            <a href="/jewellery" class="slide-btn2">
+                                Our Products
+                            </a>
 
-                    <p>
-                        Premium Rhodium Plating Solutions
-                        for a Brilliant, Durable and
-                        Long-Lasting Jewellery Finish.
-                    </p>
+                        </div>
 
-                    <a href="/jewellery" class="slide-btn2">
-                        Our Products
-                    </a>
+                    </div>
 
                 </div>
 
+
+                <!-- SLIDE 6 -->
+
+                <div class="slide">
+
+                    <div class="slide-content1">
+
+                        <img
+                            class="legor"
+                            src="{{ asset('burnout.png') }}"
+                            alt="Burnout Furnace"
+                        >
+
+                        <div class="alloy">
+
+                            <h1>Burnout Furnace</h1>
+
+                            <h2>Precision Heat Technology</h2>
+
+                            <p>
+                                Reliable Heating Solutions for
+                                Precision Jewellery Manufacturing.
+                            </p>
+
+                            <a href="/jewellery" class="slide-btn1">
+                                Our Products
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            <!-- PREVIOUS BUTTON -->
+
+            <button
+                type="button"
+                class="slider-arrow prev"
+                onclick="changeSlide(-1)"
+                aria-label="Previous slide"
+            >
+                &#10094;
+            </button>
+
+
+            <!-- NEXT BUTTON -->
+
+            <button
+                type="button"
+                class="slider-arrow next"
+                onclick="changeSlide(1)"
+                aria-label="Next slide"
+            >
+                &#10095;
+            </button>
+
+
+            <!-- SLIDER DOTS -->
+
+            <div class="slider-dots">
+
+                <span class="dot active"
+                    onclick="currentSlide(0)"></span>
+
+                <span class="dot"
+                    onclick="currentSlide(1)"></span>
+
+                <span class="dot"
+                    onclick="currentSlide(2)"></span>
+
+                <span class="dot"
+                    onclick="currentSlide(3)"></span>
+
+                <span class="dot"
+                    onclick="currentSlide(4)"></span>
+
+                <span class="dot"
+                    onclick="currentSlide(5)"></span>
+
+                <span class="dot"
+                    onclick="currentSlide(6)"></span>
+
+                <!-- <span class="dot"
+                    onclick="currentSlide(6)"></span> -->
             </div>
 
-        </div>
-
-    </div>
-
-
-    <!-- PREVIOUS BUTTON -->
-
-    <button
-        type="button"
-        class="slider-arrow prev"
-        onclick="changeSlide(-1)"
-        aria-label="Previous slide"
-    >
-        &#10094;
-    </button>
-
-
-    <!-- NEXT BUTTON -->
-
-    <button
-        type="button"
-        class="slider-arrow next"
-        onclick="changeSlide(1)"
-        aria-label="Next slide"
-    >
-        &#10095;
-    </button>
-
-
-    <!-- SLIDER DOTS -->
-
-    <div class="slider-dots">
-
-        <span class="dot active"
-              onclick="currentSlide(0)"></span>
-
-        <span class="dot"
-              onclick="currentSlide(1)"></span>
-
-        <span class="dot"
-              onclick="currentSlide(2)"></span>
-
-        <span class="dot"
-              onclick="currentSlide(3)"></span>
-
-        <span class="dot"
-              onclick="currentSlide(4)"></span>
-
-        <span class="dot"
-              onclick="currentSlide(5)"></span>
-
-    </div>
-
-</section>
+        </section>
     </div>
 
     <section class="page2" id="our-products">
