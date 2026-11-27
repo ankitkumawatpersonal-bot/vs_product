@@ -2070,6 +2070,13 @@
     overflow: hidden;
 }
 
+.lower-yellow {
+    padding: 90px 7%;
+    background: linear-gradient(135deg, #fff, #f8f3e9);
+    position: relative;
+    overflow: hidden;
+}
+
 .casting {
     max-width: 1250px;
     margin: auto;
@@ -2454,6 +2461,22 @@
                     <li> SM1 (18KT RICH YELLOW/HOLLOW CHAIN) </li>
                     <li> SM2 (18KT RICH YELLOW/BANGLE) </li>
                     <li> B183N (18KT RICH YELLOW/HOLLOW CHAIN) </li>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="lower-yellow">
+            <div class="casting">
+                <h1 class="higher-karatage"> Lower Karatage </h1>
+                <div class="higher-para">
+                    <li> BH057YC (9-14KT YELLOW) </li>
+                    <li> A101 (9-14KT RICH YELLOW)  </li>
+                    <li> A202 (9-14KT RICH YELLOW) </li>
+                    <li> SCA5 (9-14KT GREEN YELLOW) </li>
+                    <li> Y143W (9-14KT RICH YELLOW/HOLLOW CHAIN) </li>
+                    <li> SM5 (9-14KT RICH YELLOW/BANGLE) </li>
+                    <li> Y145TL (9-14KT RICH YELLOW/SOLID CHAIN) </li>
                 </div>
             </div>
 
